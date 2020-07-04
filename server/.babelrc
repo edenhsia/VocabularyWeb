@@ -7,9 +7,6 @@
         "targets": {
           "node": "14"
         },
-        // for @babel/polyfill
-        "useBuiltIns": "usage",
-        "corejs": 3
       }
     ]
   ]

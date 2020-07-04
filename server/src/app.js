@@ -1,11 +1,10 @@
 import createError from 'http-errors';
 import express from 'express';
-import { join } from 'path';
 import cookieParser from 'cookie-parser';
 import logger from 'morgan';
 import helmet from 'helmet';
 
-import debug from './debug';
+import debug from './debug.js';
 
 // import projectsRouter from './routes/projects';
 
@@ -35,7 +34,6 @@ app.use(express.json({ limit: '50mb' }));
 app.use(express.urlencoded({ limit: '50mb', extended: true }));
 
 app.use(cookieParser());
-app.use(express.static(join(__dirname, 'public')));
 
 // app.use('/api/projects', projectsRouter);
 

@@ -2,11 +2,10 @@
   "name": "time-manager-server",
   "version": "1.1.0",
   "private": true,
+  "type": "module",
   "scripts": {
-    "start": "nodemon -r @babel/register -r dotenv/config src/server.js",
-    "build": "rm -rf build && mkdir build && babel src -s -d build",
-    "ci-test": "jest",
-    "test": "jest --watch"
+    "start": "nodemon -r dotenv/config src/server.js",
+    "test": "node src/jest.js"
   },
   "dependencies": {
     "cookie-parser": "^1.4.5",

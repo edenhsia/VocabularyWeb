@@ -8,6 +8,7 @@
     "test": "node src/jest.js"
   },
   "dependencies": {
+    "@prisma/client": "^2.2.0",
     "cookie-parser": "^1.4.5",
     "debug": "^4.1.1",
     "express": "^4.17.1",

@@ -5,6 +5,10 @@
   "type": "module",
   "scripts": {
     "start": "nodemon -r dotenv/config src/server.js",
+    "migrate": "node -r dotenv/config prisma/migrate.js",
+    "introspect": "prisma introspect",
+    "generate": "prisma generate",
+    "studio": "prisma studio --experimental",
     "test": "node src/jest.js"
   },
   "dependencies": {
@@ -16,9 +20,7 @@
     "helmet": "^3.22.0",
     "http-errors": "^1.7.3",
     "morgan": "^1.10.0",
-    "pg": "^8.3.0",
-    "pg-hstore": "^2.3.3",
-    "sequelize": "^6.3.3"
+    "pg": "^8.3.0"
   },
   "devDependencies": {
     "@babel/core": "^7.6.2",

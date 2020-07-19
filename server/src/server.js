@@ -4,6 +4,7 @@
  * Module dependencies.
  */
 import PG from 'pg';
+import { Sequelize } from 'sequelize';
 
 import debug from './debug.js';
 import app from './app.js';
@@ -24,6 +25,11 @@ app.set('port', port);
  * https://docs.aws.amazon.com/vpc/latest/userguide/VPC_SecurityGroups.html#AddRemoveRules
  * https://aws.amazon.com/tw/premiumsupport/knowledge-center/rds-cannot-connect/
  */
+const sequelize = new Sequelize(process.env.DATABASE_URL);
+
+sequelize.authenticate()
+  .then(() => console.log('Connection has been established successfully.'))
+  .finally(() => sequelize.close());
 
 const client = new PG.Client();
 client.connect()

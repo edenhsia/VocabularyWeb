@@ -4,9 +4,9 @@ import cookieParser from 'cookie-parser';
 import logger from 'morgan';
 import helmet from 'helmet';
 
-import debug from './debug.js';
+import debug from './config/debug';
 
-import categoryRouter from './routes/category.js';
+import categoryRouter from './routes/category';
 
 const isProduction = process.env.NODE_ENV === 'production';
 
@@ -43,8 +43,11 @@ app.use((req, res, next) => {
 });
 
 // error handler
-// eslint-disable-next-line no-unused-vars
-app.use((err, req, res, next) => {
+app.use((
+  err: { stack: string; status: number; message: string; },
+  req: unknown,
+  res: { status: (arg0: number) => void; json: (arg0: unknown) => void; },
+) => {
   if (!isProduction) {
     debug(err.stack);
   }

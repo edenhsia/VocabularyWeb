@@ -1,10 +1,11 @@
-import request from 'supertest';
+// import request from 'supertest';
 
-import app from '../app';
+// import app from '../app';
 
 it('projects', () => {
   expect(500).toEqual(500);
-  // test('post one duplicate project, other correct should fail but insert correct projects', async () => {
+  // ('post one duplicate project,
+  // other correct should fail but insert correct projects', async () => {
   //   await request(app).post('/api/projects/').send([projectPayload]);
   //   const res = await request(app)
   //     .post('/api/projects/')

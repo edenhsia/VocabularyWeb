@@ -29,6 +29,7 @@ client.connect()
       FOREIGN KEY ("categoryId") REFERENCES "public"."Category"(id)
     );
   `))
-  // .then(() => client.query('SELECT * FROM "public"."User";'))
-  // .then((res) => console.log(res))
-  .finally(() => client.end());
+  .then(() => client.query('SELECT * FROM "public"."User";'))
+  .then((res) => console.log(res))
+  .finally(() => client.end())
+  .catch((error) => console.log(error));

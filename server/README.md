@@ -1,5 +1,8 @@
-1. SQL
-2. 驗證
-3. 權限
-4. Test 轉換 Jest to newman
-5. AWS
+[x] AWS RDS
+[x] SQL
+[x] Prisma
+[x] TypeScript
+
+[] AWS S3
+[] 使用者登入登出
+[] 權限

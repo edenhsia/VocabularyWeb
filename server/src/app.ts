@@ -7,6 +7,7 @@ import helmet from 'helmet';
 import debug from './config/debug';
 
 import categoryRouter from './routes/category';
+import vocabulary from './routes/vocabulary';
 
 const isProduction = process.env.NODE_ENV === 'production';
 
@@ -36,6 +37,7 @@ app.use(express.urlencoded({ limit: '50mb', extended: true }));
 app.use(cookieParser());
 
 app.use('/api/categorys', categoryRouter);
+app.use('/api/vocabularys', vocabulary);
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {

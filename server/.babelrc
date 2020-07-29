@@ -1,0 +1,13 @@
+// for jest babel config
+{
+  "presets": [
+    [
+      "@babel/preset-env",
+      {
+        "targets": {
+          "node": "14"
+        },
+      }
+    ]
+  ]
+}

@@ -18,17 +18,20 @@ router.post('/', async (req: { body: { name: string } }, res) => {
   res.json(category);
 });
 
-router.put('/:id', async (req: { params: { id: string }, body: { name: string } }, res) => {
-  const { id } = req.params;
-  const { name } = req.body;
+router.put(
+  '/:id',
+  async (req: { params: { id: string }; body: { name: string } }, res) => {
+    const { id } = req.params;
+    const { name } = req.body;
 
-  const category = await prisma.category.update({
-    where: { id: Number.parseInt(id, 10) },
-    data: { name },
-  });
+    const category = await prisma.category.update({
+      where: { id: Number.parseInt(id, 10) },
+      data: { name },
+    });
 
-  res.json(category);
-});
+    res.json(category);
+  }
+);
 
 router.delete('/:id', async (req: { params: { id: string } }, res) => {
   const { id } = req.params;

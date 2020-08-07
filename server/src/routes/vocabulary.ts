@@ -7,12 +7,12 @@ const prisma = new PrismaClient();
 const router = Router();
 
 type Vocabulary = {
-  name: string,
-  sentance: string,
-  chinese: string,
-  chineseSentance: string,
-  src: string,
-  category: string
+  name: string;
+  sentance: string;
+  chinese: string;
+  chineseSentance: string;
+  src: string;
+  category: string;
 };
 
 router.get('/', async (req, res) => {
@@ -21,9 +21,7 @@ router.get('/', async (req, res) => {
 });
 
 router.post('/', async (req: { body: Vocabulary }, res) => {
-  const {
-    name, sentance, chinese, chineseSentance, src, category,
-  } = req.body;
+  const { name, sentance, chinese, chineseSentance, src, category } = req.body;
 
   const vocabulary = await prisma.vocabulary.create({
     data: {
@@ -40,28 +38,36 @@ router.post('/', async (req: { body: Vocabulary }, res) => {
   res.json(vocabulary);
 });
 
-router.put('/:id', async (req: { params: { id: string }, body: Vocabulary }, res) => {
-  const { id } = req.params;
-  const {
-    name, sentance, chinese, chineseSentance, src, category,
-  } = req.body;
-
-  const vocabulary = await prisma.vocabulary.update({
-    where: { id: Number.parseInt(id, 10) },
-    data: {
+router.put(
+  '/:id',
+  async (req: { params: { id: string }; body: Vocabulary }, res) => {
+    const { id } = req.params;
+    const {
       name,
       sentance,
       chinese,
       chineseSentance,
       src,
-      category: {
-        connect: { name: category },
-      },
-    },
-  });
+      category,
+    } = req.body;
 
-  res.json(vocabulary);
-});
+    const vocabulary = await prisma.vocabulary.update({
+      where: { id: Number.parseInt(id, 10) },
+      data: {
+        name,
+        sentance,
+        chinese,
+        chineseSentance,
+        src,
+        category: {
+          connect: { name: category },
+        },
+      },
+    });
+
+    res.json(vocabulary);
+  }
+);
 
 router.delete('/:id', async (req: { params: { id: string } }, res) => {
   const { id } = req.params;

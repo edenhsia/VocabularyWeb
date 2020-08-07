@@ -45,22 +45,24 @@ app.use((req, res, next) => {
 });
 
 // error handler
-app.use((
-  err: { stack: string; status: number; message: string; },
-  req: unknown,
-  res: { status: (arg0: number) => void; json: (arg0: unknown) => void; },
-) => {
-  if (!isProduction) {
-    debug(err.stack);
-  }
+app.use(
+  (
+    err: { stack: string; status: number; message: string },
+    req: unknown,
+    res: { status: (arg0: number) => void; json: (arg0: unknown) => void }
+  ) => {
+    if (!isProduction) {
+      debug(err.stack);
+    }
 
-  res.status(err.status || 500);
-  res.json({
-    errors: {
-      message: err.message,
-      error: isProduction ? {} : err,
-    },
-  });
-});
+    res.status(err.status || 500);
+    res.json({
+      errors: {
+        message: err.message,
+        error: isProduction ? {} : err,
+      },
+    });
+  }
+);
 
 export default app;

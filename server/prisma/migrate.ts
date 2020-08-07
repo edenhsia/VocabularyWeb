@@ -2,8 +2,10 @@ import PG from 'pg';
 
 const client = new PG.Client();
 
-client.connect()
-  .then(() => client.query(`
+client
+  .connect()
+  .then(() =>
+    client.query(`
     CREATE TYPE "role" AS ENUM ('admin', 'user');
 
     CREATE TABLE "public"."User" (
@@ -28,7 +30,8 @@ client.connect()
       "categoryId" INTEGER NOT NULL,
       FOREIGN KEY ("categoryId") REFERENCES "public"."Category"(id)
     );
-  `))
+  `)
+  )
   .then(() => client.query('SELECT * FROM "public"."User";'))
   .then((res) => console.log(res))
   .finally(() => client.end())

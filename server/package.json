@@ -3,8 +3,9 @@
   "version": "1.1.0",
   "private": true,
   "scripts": {
-    "start": "ts-node-dev -r dotenv/config src/config/server.ts",
+    "start": "ts-node-dev -r dotenv/config src/server.ts",
     "test": "node src/config/jest.js",
+    "build": "rm -rf build && mkdir build && tsc -p .",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
     "migrate": "ts-node -r dotenv/config prisma/migrate.ts",
     "introspect": "prisma introspect",

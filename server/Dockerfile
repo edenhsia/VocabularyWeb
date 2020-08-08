@@ -1,9 +1,8 @@
 FROM node:14.7.0
 WORKDIR /usr/src/app
-COPY ["package.json", "package-lock.json*", "npm-shrinkwrap.json*", "./"]
+COPY . .
 RUN npm install
 RUN npm run build
-COPY ./build .
 
 # Don't use PM2
 # https://pm2.keymetrics.io/docs/usage/docker-pm2-nodejs/

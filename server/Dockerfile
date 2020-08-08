@@ -1,4 +1,4 @@
-FROM node:14.3.0
+FROM node:14.7.0
 WORKDIR /usr/src/app
 COPY ["package.json", "package-lock.json*", "npm-shrinkwrap.json*", "./"]
 RUN npm install

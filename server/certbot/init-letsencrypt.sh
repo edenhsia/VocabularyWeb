@@ -9,7 +9,7 @@ fi
 
 domains=(vocabulary.youranai.com)
 rsa_key_size=4096
-data_path="./cerbot"
+data_path="./certbot"
 email="skyran1278@gmail.com" # Adding a valid address is strongly recommended
 staging=1 # Set to 1 if you're testing your setup to avoid hitting request limits
 

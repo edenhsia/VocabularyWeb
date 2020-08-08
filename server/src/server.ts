@@ -3,8 +3,8 @@
 /**
  * Module dependencies.
  */
-import debug from './debug';
-import app from '../app';
+import debug from './config/debug';
+import app from './app';
 
 /**
  * Get port from environment and store in Express.

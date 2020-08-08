@@ -2,6 +2,8 @@
 /certbot/conf
 /certbot/www
 
+*.pem
+
 # dependencies
 /node_modules
 /.pnp

@@ -3,10 +3,8 @@
 /**
  * Module dependencies.
  */
-import PG from 'pg';
-
-import debug from './debug.js';
-import app from './app.js';
+import debug from './config/debug';
+import app from './app';
 
 /**
  * Get port from environment and store in Express.
@@ -24,11 +22,10 @@ app.set('port', port);
  * https://docs.aws.amazon.com/vpc/latest/userguide/VPC_SecurityGroups.html#AddRemoveRules
  * https://aws.amazon.com/tw/premiumsupport/knowledge-center/rds-cannot-connect/
  */
-
-const client = new PG.Client();
-client.connect()
-  .then(() => app.listen(port, () => debug(`Listening on ${port}`)))
-  .catch((err) => debug('connection error', err.stack));
+app.listen(port, () => debug(`Listening on ${port}`));
+// client.connect()
+//   .then(() => app.listen(port, () => debug(`Listening on ${port}`)))
+//   .catch((err) => debug('connection error', err.stack));
 // const res = await client.query('SELECT $1::text as message', ['Hello world!'])
 // console.log(res.rows[0].message) // Hello world!
 // await client.end()

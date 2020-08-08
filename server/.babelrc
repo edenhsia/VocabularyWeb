@@ -6,8 +6,9 @@
       {
         "targets": {
           "node": "14"
-        },
+        }
       }
-    ]
+    ],
+    "@babel/preset-typescript"
   ]
 }

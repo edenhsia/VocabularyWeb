@@ -4,9 +4,10 @@ import cookieParser from 'cookie-parser';
 import logger from 'morgan';
 import helmet from 'helmet';
 
-import debug from './debug.js';
+import debug from './config/debug';
 
-// import projectsRouter from './routes/projects';
+import categoryRouter from './routes/category';
+import vocabulary from './routes/vocabulary';
 
 const isProduction = process.env.NODE_ENV === 'production';
 
@@ -35,7 +36,8 @@ app.use(express.urlencoded({ limit: '50mb', extended: true }));
 
 app.use(cookieParser());
 
-// app.use('/api/projects', projectsRouter);
+app.use('/api/categorys', categoryRouter);
+app.use('/api/vocabularys', vocabulary);
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {
@@ -43,19 +45,24 @@ app.use((req, res, next) => {
 });
 
 // error handler
-// eslint-disable-next-line no-unused-vars
-app.use((err, req, res, next) => {
-  if (!isProduction) {
-    debug(err.stack);
-  }
+app.use(
+  (
+    err: { stack: string; status: number; message: string },
+    req: unknown,
+    res: { status: (arg0: number) => void; json: (arg0: unknown) => void }
+  ) => {
+    if (!isProduction) {
+      debug(err.stack);
+    }
 
-  res.status(err.status || 500);
-  res.json({
-    errors: {
-      message: err.message,
-      error: isProduction ? {} : err,
-    },
-  });
-});
+    res.status(err.status || 500);
+    res.json({
+      errors: {
+        message: err.message,
+        error: isProduction ? {} : err,
+      },
+    });
+  }
+);
 
 export default app;

@@ -1,13 +1,19 @@
 {
-  "name": "time-manager-server",
+  "name": "vacabulary-server",
   "version": "1.1.0",
   "private": true,
-  "type": "module",
   "scripts": {
-    "start": "nodemon -r dotenv/config src/server.js",
-    "test": "node src/jest.js"
+    "start": "ts-node-dev -r dotenv/config src/server.ts",
+    "test": "node src/config/jest.js",
+    "build": "rm -rf build && mkdir build && tsc -p .",
+    "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
+    "migrate": "node -r dotenv/config prisma/migrate.js",
+    "introspect": "prisma introspect",
+    "generate": "prisma generate",
+    "studio": "prisma studio --experimental"
   },
   "dependencies": {
+    "@prisma/client": "^2.2.2",
     "cookie-parser": "^1.4.5",
     "debug": "^4.1.1",
     "express": "^4.17.1",
@@ -15,17 +21,39 @@
     "helmet": "^3.22.0",
     "http-errors": "^1.7.3",
     "morgan": "^1.10.0",
-    "pg": "^8.2.1"
+    "pg": "^8.3.0"
   },
   "devDependencies": {
     "@babel/core": "^7.6.2",
     "@babel/preset-env": "^7.6.2",
+    "@babel/preset-typescript": "^7.10.4",
+    "@prisma/cli": "^2.2.2",
+    "@types/cookie-parser": "^1.4.2",
+    "@types/debug": "^4.1.5",
+    "@types/express": "^4.17.7",
+    "@types/helmet": "0.0.47",
+    "@types/http-errors": "^1.8.0",
+    "@types/jest": "^26.0.5",
+    "@types/morgan": "^1.9.1",
+    "@types/node": "^14.0.23",
+    "@types/pg": "^7.14.4",
+    "@typescript-eslint/eslint-plugin": "^3.6.1",
+    "@typescript-eslint/parser": "^3.6.1",
     "dotenv": "^8.2.0",
     "eslint": "^6.8.0",
-    "eslint-config-airbnb-base": "^14.1.0",
-    "eslint-plugin-import": "^2.20.1",
+    "eslint-config-airbnb-typescript": "^9.0.0",
+    "eslint-config-prettier": "^6.11.0",
+    "eslint-plugin-eslint-comments": "^3.2.0",
+    "eslint-plugin-import": "^2.22.0",
+    "eslint-plugin-jest": "^23.18.0",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-unicorn": "^21.0.0",
     "jest": "^26.0.1",
-    "nodemon": "^2.0.4",
-    "supertest": "^4.0.2"
+    "prettier": "2.0.5",
+    "supertest": "^4.0.2",
+    "ts-jest": "^26.1.3",
+    "ts-node": "^8.10.2",
+    "ts-node-dev": "^1.0.0-pre.56",
+    "typescript": "^3.9.7"
   }
 }

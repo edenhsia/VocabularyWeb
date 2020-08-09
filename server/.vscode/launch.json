@@ -8,7 +8,7 @@
       "type": "node",
       "request": "attach",
       "name": "nodemon",
-      "restart": true,
+      "restart": true
     }
   ]
 }
